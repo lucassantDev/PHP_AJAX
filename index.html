@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="estilo.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="centralizarDiv">
+        <div id="blocoFormulario">
+
+            <img src="pref_sp.png" id="logo">
+
+            <img src="portal.png" style="margin-left: 6px">
+
+            <h1 style="color: black; font-size: 30px; ">Nova solicitação</h1>
+
+            <div id="form">
+                <label>Nome completo</label> <br>
+                <input type="text" id="nomeInformado"> <br> <br>
+
+                <label>CPF</label> <br>
+                <input type="text" id="cpfInformado"> <br> <br>
+
+                <label>E-mail</label> <br>
+                <input type="email" id="emailInformado"> <br> <br>
+                
+                <label>Telefone</label> <br>
+                <input type="text" id="telefoneInformado" placeholder="(DDD)..."> <br> <br>
+
+                <label>Setor responsável</label> <br>
+                <select id="setorInformado">
+                    <option value="Não selecionado">Selecione</option>
+                    <option value="Finanças">Finanças</option>
+                    <option value="Administração">Administração</option>
+                    <option value="Infraestrutura">Infraestrutura</option>
+                </select> <br> <br>
+
+                <label> Detalhes da solicitação </label> <br>
+                <textarea id="protocoloInformado" cols="45" rows="7"></textarea> <br> <br>
+
+                <button id="btnProtocolo">Abrir Protocolo</button>
+            </div> <!--FIM DIV FORM-->
+
+        </div> <!-- FIM DIV BLOCO FORMULARIO-->
+
+    </div> <!-- FIM DIV CENTALIZARDIV-->
+
+    <script>
+        $("#btnProtocolo").click(function(){
+            var nomeCapturado = $("#nomeInformado").val();
+            var cpfCapturado = $("#cpfInformado").val();
+            var emailCapturado = $("#emailInformado").val();
+            var telefoneCapturado = $("#Informado").val();
+            var setorCapturado = $("#setorInformado").val();
+            var protocoloCapturado = $("#protocoloInformado").val();
+
+            $.ajax({
+                url: "protocolo.php",
+                method: "POST",
+                data:{
+                    nomeCapturado_index: nomeCapturado,
+                    cpfCapturado_index: cpfCapturado,
+                    emailCapturado_index: emailCapturado,
+                    telefoneCapturado_index: telefoneCapturado,
+                    setorCapturado_index: setorCapturado,
+                    protocoloCapturado_index: protocoloCapturado
+                },
+                success: function(){
+                    alert("enviado com sucesso!!")
+                },
+                error: function(){
+                    alert("protocolo não foi enviado")
+                }
+            });
+        });
+    </script>
+</body>
+</html>

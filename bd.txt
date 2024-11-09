@@ -1,0 +1,16 @@
+create database bd_prefeitura_sp;
+use bd_prefeitura_sp;
+
+create table tb_protocolos(
+	numero_protocolo int auto_increment primary key,
+    nome_completo varchar(255) not null,
+    cpf varchar(11) not null,
+    email varchar(70) not null,
+    telefone varchar(25) not null,
+    setor_responsavel enum('Finanças', 'Admistração', 'Infraestrutura'),
+    detalhes text not null,
+    data_hora datetime default current_timestamp() #current_timestamp pega a hora e data atual
+
+)auto_increment=10000;
+
+select * from tb_protocolos;
